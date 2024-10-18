@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Пустой Сайт</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Подключение CSS (если нужно) -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0; /* Светлый фон */
+        }
+        .heart {
+            width: 100px;
+            height: 100px;
+            background-color: #ff69b4;
+            position: relative;
+            transform: rotate(-45deg);
+            margin-bottom: 20px;
+            animation: none;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 100px;
+            height: 100px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart::before {
+            top: -50px;
+            left: 0;
+        }
+        .heart::after {
+            left: 50px;
+            top: 0;
+        }
+        .beat {
+            animation: beat 0.6s infinite alternate; /* Анимация "битья" */
+        }
+        @keyframes beat {
+            0% {
+                transform: scale(1) rotate(-45deg);
+            }
+            100% {
+                transform: scale(1.2) rotate(-45deg);
+            }
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart" id="heart"></div>
+    <button id="beatButton">Нажми меня</button>
+
+    <script>
+        const heart = document.getElementById('heart');
+        const button = document.getElementById('beatButton');
+
+        button.addEventListener('click', () => {
+            heart.classList.toggle('beat');
+        });
+    </script>
+</body>
+</html>
+
